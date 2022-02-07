@@ -14,8 +14,11 @@ exports.createQuiz = async (req, res, next) => {
     const name = req.body.name;
     const question_list = req.body.question_list;
     const answers = req.body.answers;
+    const is_negative_marks_allowed = req.body.is_negative_marks_allowed;
+    const per_question_marks = req.body.per_question_marks;
+    const per_question_negative_marks = req.body.per_question_negative_marks;
 
-    const quiz = new Quiz({ name, question_list, answers, created_by: req.userId });
+    const quiz = new Quiz({ name, question_list, answers, created_by: req.userId, is_negative_marks_allowed, per_question_marks, per_question_negative_marks});
     const result = await quiz.save();
     res.status(201).send({ status: "success", message: "Quiz created successful", data: { quizId: result._id } });
   } catch (error) {
@@ -95,6 +98,9 @@ exports.updateQuiz = async (req, res, next) => {
     quiz.name = req.body.name;
     quiz.question_list = req.body.question_list;
     quiz.answers = req.body.answers;
+    quiz.is_negative_marks_allowed = req.body.is_negative_marks_allowed;
+    quiz.per_question_marks = req.body.per_question_marks;
+    quiz.per_question_negative_marks = req.body.per_question_negative_marks;
 
     await quiz.save();
     res.status(200).json({ message: 'Quiz Updated.', quiz: quiz });

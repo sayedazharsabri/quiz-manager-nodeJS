@@ -21,12 +21,12 @@ app.use((error, req, res, next) => {
 
     const status = error.statusCode || 500;
     let message = error.message;
+    const data = error.data;
+    logger.error(JSON.stringify({status:status, message: message, data: data})); 
     if(status == 500){
         message = "Something went wrong, please try after sometime";
     } 
-    const data = error.data;
 
-    logger.error(JSON.stringify({status:status, message: message, data: data})); 
     res.status(status).json({status:"error", message: message, data: data });
 });
 

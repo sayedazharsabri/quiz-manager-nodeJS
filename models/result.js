@@ -34,6 +34,24 @@ const resultSchema = new schema({
         type: Number,
         required: true,
     },
+    total_marks: {
+        type: Number,
+        required: true,
+    },
+    marks_obtained: {
+        type: Number,
+        required: true,
+    },
+    negative_marks: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    result_status:{
+        type: String,
+        required: true,
+        enum:['pass','fail'],
+    },
     submitted_answers: {}
 }, { timestamps: true });
 

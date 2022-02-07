@@ -21,15 +21,14 @@ exports.getResult = async (req, res, next) => {
                     notattempted_answers:1,
                     result_percent:1,
                     createdAt:1,
+                    total_marks:1,
+                    marks_obtained:1,
+                    result_status:1,
                     quiz:{name:1}}
                     
                 }
             ]);
-            
-            await Result.findOne({_id:req.params.resultId,user_id:req.userId}, { 
-                user_id: 0, 
-                submitted_answers:0,
-            })
+          
         } else{
             result = await Result.aggregate([
                 {$match:{user_id:mongoose.Types.ObjectId(req.userId)}},
@@ -38,7 +37,7 @@ exports.getResult = async (req, res, next) => {
                     localField:"quiz_id",
                     foreignField:"_id", as:"quiz"
                 }},
-                {$project:{_id:0,quiz_id:1,result_percent:1,quiz:{name:1}}
+                {$project:{_id:0,quiz_id:1,result_status:1,quiz:{name:1},createdAt:1}
                     
                 }
             ]);

@@ -7,7 +7,7 @@ const isAuth = require('../middleware/is-auth');
 const router = express.Router();
 
 
-
+/* This route will use to create the quiz*/
 // POST /quiz/
 router.post(
     '/',
@@ -35,21 +35,51 @@ router.post(
             .custom((ansObj, { req }) => {
                 const questionList = req.body.question_list;
                 const question_list_length = questionList.length;
-                const ansMissed = [];
+                let ansMissed = "";
                 for (let i = 0; i < question_list_length; i++) {
                     if (!ansObj[questionList[i]['question_number']]) {
-                        ansMissed.push(questionList[i]['question_number']);
+                        ansMissed += questionList[i]['question_number'] + ", ";
                     }
                 }
-                if (ansMissed.length > 0) {
-                    return Promise.reject({ "message": "Kindly add all the answers", data: { question_numbers: ansMissed } });
+                if (ansMissed != "") {
+                    ansMissed = ansMissed.substring(0, ansMissed.length - 2);
+                    return Promise.reject("Kindly add answers for Qustion number " + ansMissed);
                 }
                 return true;
+            }),
+        body('per_question_marks')
+            .custom(num => {
+                if (num < 1) {
+                    return Promise.reject("Per question marks should be 1 or greater");
+                }
+                return true;
+            }),
+        body('is_negative_marks_allowed')
+            .custom((value, { req }) => {
+                if (value) {
+                    if (req.body.per_question_marks < req.body.per_question_negative_marks) {
+
+                        return Promise.reject("Per question marks should be greater or equal to negative marks");
+                    }
+                    if (req.body.per_question_negative_marks <= 0) {
+
+                        return Promise.reject("Per question negative marks should be greater than 0");
+                    }
+                }
+                return true;
+            }),
+        body('pass_percent')
+            .custom(value => {
+                if (value >= 0 && value <= 100) {
+                    return true;
+                }
+                return Promise.reject("Enter a valid pass percent, number between 0 to 100");
             })
     ],
     createQuiz
 );
 
+/*This route is used to get quiz to edit*/
 // POST /quiz/edit  
 router.post('/edit', isAuth, [
     body('quizId')
@@ -58,6 +88,7 @@ router.post('/edit', isAuth, [
         .withMessage("Please enter valid quizID"),
 ], editQuiz);
 
+/*This route is used to update the quiz*/
 // POST /quiz/update
 router.post(
     '/update',
@@ -89,21 +120,51 @@ router.post(
             .custom((ansObj, { req }) => {
                 const questionList = req.body.question_list;
                 const question_list_length = questionList.length;
-                const ansMissed = [];
+                let ansMissed = "";
                 for (let i = 0; i < question_list_length; i++) {
                     if (!ansObj[questionList[i]['question_number']]) {
-                        ansMissed.push(questionList[i]['question_number']);
+                        ansMissed += questionList[i]['question_number'] + ", ";
                     }
                 }
-                if (ansMissed.length > 0) {
-                    return Promise.reject({ "message": "Kindly add all the answers", data: { question_numbers: ansMissed } });
+                if (ansMissed != "") {
+                    ansMissed = ansMissed.substring(0, ansMissed.length - 2);
+                    return Promise.reject("Kindly add answers for Qustion number " + ansMissed);
                 }
                 return true;
+            }),
+        body('per_question_marks')
+            .custom(num => {
+                if (num < 1) {
+                    return Promise.reject("Per question marks should be 1 or greater");
+                }
+                return true;
+            }),
+        body('is_negative_marks_allowed')
+            .custom((value, { req }) => {
+                if (value) {
+                    if (req.body.per_question_marks < req.body.per_question_negative_marks) {
+
+                        return Promise.reject("Per question marks should be greater or equal to negative marks");
+                    }
+                    if (req.body.per_question_negative_marks <= 0) {
+
+                        return Promise.reject("Per question negative marks should be greater than 0");
+                    }
+                }
+                return true;
+            }),
+        body('pass_percent')
+            .custom(value => {
+                if (value >= 0 && value <= 100) {
+                    return true;
+                }
+                return Promise.reject("Enter a valid pass percent, number between 0 to 100");
             })
     ],
     updateQuiz
 );
 
+/*This route is used to publish the quiz*/
 // POST /quiz/publish
 router.post('/publish', isAuth,
     [
