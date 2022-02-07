@@ -13,7 +13,7 @@ It is a REST API for a quiz app where users can create and attempt quizzes. The 
   - Users can create an account
   - Users can create their own quiz with multiple questions & answers.
   - Users can manipulate own quizzes which are not published.
-  - Users can publish quiezzes. 
+  - Users can publish quizzes. 
   - Users cannot manipulate other users' quiz templates.
   - Users can attempt other users' published quizzes as many times as they choose.
   - Users can view basic stats on quiz attempts/completion/scores/etc..
