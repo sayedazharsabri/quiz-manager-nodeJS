@@ -1,0 +1,42 @@
+Collections
+1. users
+- _id, name, email, password, quiz_created[quiz_id], quiz_results[result_id]
+
+
+2. quiz
+- _id, name, topic, qusetion_list[{qn:1, question:"hi how are you", options:{1:"op1", 2:"op2",3:"op3"}, answer:2}], is_published
+
+3. results
+- _id, user_id, quiz_id, total_questions, correction_answers, incorrect_answers, notattempted_answers, score
+
+
+
+APIS
+
+=> authController
+
+-> Register User
+	bcrypt password
+-> Login
+	jwt
+
+=> QuizController
+
+	create_quiz -> (is_auth): push quiz id to current users quiz_created.
+	getMyQuiz ->(is_auth): varify that current_user has quiz id in quiz_created then return these quizes(id and name)
+	getMyQuiz?id=1 ->(is_auth): varify that current_user has quiz id in quiz_created then return complete quiz
+	publish quiz -> (is_auth): varify that current_user has quiz id in quiz_created then publish it - set isPublish 1.
+	update quiz -> (is_auth): varify that current_user has quiz id in quiz_created and isPublish not 1 then update it.
+	
+=> ExamController
+	toAttemptQuiz {_id:123} -> (is_auth):=> check it is published =>  provide this _id quiz data
+	submitQuiz  {_id:123, answerAttempt:{1:2,2:3,3:4} } -> (is_auth): -> 
+			- getQuiz and calculate for results
+			- push to quiz_results
+			
+=> ReportController
+	getMyAttempts => (is_auth) => quiz_results - id and name and date
+	getQuizDetail/quiz_id => is_auth => particular quiz result
+	
+	
+	

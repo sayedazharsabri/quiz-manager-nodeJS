@@ -1,0 +1,1043 @@
+{
+	"info": {
+		"_postman_id": "f37f6695-b009-488a-8d88-2f04f35148a2",
+		"name": "quiz system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sayed Azhar Sabri\",\r\n    \"email\":\"sayed11@sayed.com\",\r\n    \"password\":\"22223232\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "home url"
+			},
+			"response": [
+				{
+					"name": "User Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sayed Azhar Sabri\",\r\n    \"email\":\"sayed11@sayed.com\",\r\n    \"password\":\"22223232\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "101"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"65-NwzN6rfkqPTlpBGEqPIAkmL4A/8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 08:06:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Registration successful\",\n    \"data\": {\n        \"userId\": \"61fe30119e10bf688a675a44\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"email\":\"sayed11@sayed.com\",\r\n    \"password\":\"22223232\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"sayed11@sayed.com\",\r\n    \"password\":\"22223232\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "225"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e1-TkaFV3mvW6IPaaiIAheGzjMaCSY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 08:07:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNheWVkMTFAc2F5ZWQuY29tIiwidXNlcklkIjoiNjFmZTMwMTE5ZTEwYmY2ODhhNjc1YTQ0IiwiaWF0IjoxNjQ0MDQ4NDQ5LCJleHAiOjE2NDQwNTIwNDl9.BN1ShTccJ8Gpi9rqoJ_iE_FGk4QOXNUHPTH2mkwmZPo\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Quiz Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"These quiestions are dummy\",\r\n    \"question_list\": [\r\n        {\r\n            \"question_number\": 1,\r\n            \"question\": \"hi how are you\",\r\n            \"options\": {\r\n                \"1\": \"fine\",\r\n                \"2\": \"good\",\r\n                \"3\": \"not fine\"\r\n            }\r\n        },\r\n        {\r\n            \"question_number\": 2,\r\n            \"question\": \"Where are you?\",\r\n            \"options\": {\r\n                \"1\": \"Moon\",\r\n                \"2\": \"Mars\",\r\n                \"3\": \"earth\"\r\n            }\r\n        }\r\n    ],\r\n    \"answers\": {\r\n        \"1\": 1,\r\n        \"2\": 3\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/quiz/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Quiz Create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"These quiestions are dummy\",\r\n    \"question_list\": [\r\n        {\r\n            \"question_number\": 1,\r\n            \"question\": \"hi how are you\",\r\n            \"options\": {\r\n                \"1\": \"fine\",\r\n                \"2\": \"good\",\r\n                \"3\": \"not fine\"\r\n            }\r\n        },\r\n        {\r\n            \"question_number\": 2,\r\n            \"question\": \"Where are you?\",\r\n            \"options\": {\r\n                \"1\": \"Moon\",\r\n                \"2\": \"Mars\",\r\n                \"3\": \"earth\"\r\n            }\r\n        }\r\n    ],\r\n    \"answers\": {\r\n        \"1\": 1,\r\n        \"2\": 3\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/quiz",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"42-q8jRPBN+GcY+UxhMQd+P7cLABQA\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 13:23:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"message\": \"Quiz created successful\",\n    \"data\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Quiz Edit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quizId\":\"61fed3bee70b820c660e3eec\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/quiz/edit",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"edit"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Quiz Edit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quizId\":\"61fea9bba0e4e2ad2c060fed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/quiz/edit",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz",
+								"edit"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "477"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1dd-BEUJnwSUQN7ADieW9y1gRX02fW8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 16:47:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Quiz fetched.\",\n    \"quiz\": {\n        \"_id\": \"61fea9bba0e4e2ad2c060fed\",\n        \"name\": \"These quiestions are dummy\",\n        \"question_list\": [\n            {\n                \"question_number\": 1,\n                \"question\": \"hi how are you\",\n                \"options\": {\n                    \"1\": \"fine\",\n                    \"2\": \"good\",\n                    \"3\": \"not fine\"\n                },\n                \"_id\": \"61fea9bba0e4e2ad2c060fee\"\n            },\n            {\n                \"question_number\": 2,\n                \"question\": \"Where are you?\",\n                \"options\": {\n                    \"1\": \"Moon\",\n                    \"2\": \"Mars\",\n                    \"3\": \"earth\"\n                },\n                \"_id\": \"61fea9bba0e4e2ad2c060fef\"\n            }\n        ],\n        \"answers\": {\n            \"1\": 1,\n            \"2\": 3\n        },\n        \"is_published\": false,\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Quiz Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"_id\": \"61fed3bee70b820c660e3eec\",\r\n        \"name\": \"These quiestions are dummy\",\r\n        \"question_list\": [\r\n            {\r\n                \"question_number\": 1,\r\n                \"question\": \"hi how are you\",\r\n                \"options\": {\r\n                    \"1\": \"fine\",\r\n                    \"2\": \"good\",\r\n                    \"3\": \"not fine\"\r\n                },\r\n                \"_id\": \"61fed00cb34bdca37aa3b85d\"\r\n            },\r\n            {\r\n                \"question_number\": 2,\r\n                \"question\": \"Where are you?\",\r\n                \"options\": {\r\n                    \"1\": \"Moon\",\r\n                    \"2\": \"Mars\",\r\n                    \"3\": \"earth\"\r\n                },\r\n                \"_id\": \"61fed00cb34bdca37aa3b85e\"\r\n            },\r\n            \r\n            {\r\n                \"question_number\": 3,\r\n                \"question\": \"What is good?\",\r\n                \"options\": {\r\n                    \"1\": \"good\",\r\n                    \"2\": \"bad\",\r\n                    \"3\": \"worst\"\r\n                }\r\n            }\r\n        ],\r\n        \"answers\": {\r\n            \"1\": 1,\r\n            \"2\": 3,\r\n            \"3\":1\r\n        },\r\n        \"is_published\": false,\r\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\r\n        \"__v\": 0\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/quiz/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"update"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Quiz Update",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": \"61fed3bee70b820c660e3eec\",\r\n        \"name\": \"These quiestions are dummy\",\r\n        \"question_list\": [\r\n            {\r\n                \"question_number\": 1,\r\n                \"question\": \"hi how are you\",\r\n                \"options\": {\r\n                    \"1\": \"fine\",\r\n                    \"2\": \"good\",\r\n                    \"3\": \"not fine\"\r\n                },\r\n                \"_id\": \"61fed00cb34bdca37aa3b85d\"\r\n            },\r\n            {\r\n                \"question_number\": 2,\r\n                \"question\": \"Where are you?\",\r\n                \"options\": {\r\n                    \"1\": \"Moon\",\r\n                    \"2\": \"Mars\",\r\n                    \"3\": \"earth\"\r\n                },\r\n                \"_id\": \"61fed00cb34bdca37aa3b85e\"\r\n            },\r\n            \r\n            {\r\n                \"question_number\": 3,\r\n                \"question\": \"What is good?\",\r\n                \"options\": {\r\n                    \"1\": \"good\",\r\n                    \"2\": \"bad\",\r\n                    \"3\": \"worst\"\r\n                }\r\n            }\r\n        ],\r\n        \"answers\": {\r\n            \"1\": 1,\r\n            \"2\": 3,\r\n            \"3\":1\r\n        },\r\n        \"is_published\": false,\r\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\r\n        \"__v\": 0\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/quiz/update",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "688"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b0-rjz0bVyN9gPdpFCkN3GmxTSY9s8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 19:45:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Quiz Updated.\",\n    \"quiz\": {\n        \"_id\": \"61fed3bee70b820c660e3eec\",\n        \"name\": \"These quiestions are dummy\",\n        \"question_list\": [\n            {\n                \"question_number\": 1,\n                \"question\": \"hi how are you\",\n                \"options\": {\n                    \"1\": \"fine\",\n                    \"2\": \"good\",\n                    \"3\": \"not fine\"\n                },\n                \"_id\": \"61fed00cb34bdca37aa3b85d\"\n            },\n            {\n                \"question_number\": 2,\n                \"question\": \"Where are you?\",\n                \"options\": {\n                    \"1\": \"Moon\",\n                    \"2\": \"Mars\",\n                    \"3\": \"earth\"\n                },\n                \"_id\": \"61fed00cb34bdca37aa3b85e\"\n            },\n            {\n                \"question_number\": 3,\n                \"question\": \"What is good?\",\n                \"options\": {\n                    \"1\": \"good\",\n                    \"2\": \"bad\",\n                    \"3\": \"worst\"\n                },\n                \"_id\": \"61fed3ebe70b820c660e3ef8\"\n            }\n        ],\n        \"answers\": {\n            \"1\": 1,\n            \"2\": 3,\n            \"3\": 1\n        },\n        \"is_published\": false,\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n        \"createdAt\": \"2022-02-05T19:45:02.179Z\",\n        \"updatedAt\": \"2022-02-05T19:45:47.305Z\",\n        \"__v\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Quiz publish",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quizId\":\"61fed3bee70b820c660e3eec\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/quiz/publish",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"quiz",
+						"publish"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Quiz publish",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quizId\":\"61fed00cb34bdca37aa3b85c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/quiz/publish",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz",
+								"publish"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "517"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"205-eEN/YfacqzPURFVIX4wup/za03g\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 19:33:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Quiz Published.\",\n    \"quiz\": {\n        \"_id\": \"61fed00cb34bdca37aa3b85c\",\n        \"name\": \"These quiestions are dummy\",\n        \"question_list\": [\n            {\n                \"question_number\": 1,\n                \"question\": \"hi how are you\",\n                \"options\": {\n                    \"1\": \"fine\",\n                    \"2\": \"good\",\n                    \"3\": \"not fine\"\n                },\n                \"_id\": \"61fed00cb34bdca37aa3b85d\"\n            },\n            {\n                \"question_number\": 2,\n                \"question\": \"Where are you?\",\n                \"options\": {\n                    \"1\": \"Moon\",\n                    \"2\": \"Mars\",\n                    \"3\": \"earth\"\n                },\n                \"_id\": \"61fed00cb34bdca37aa3b85e\"\n            }\n        ],\n        \"answers\": {\n            \"1\": 1,\n            \"2\": 3\n        },\n        \"is_published\": true,\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n        \"__v\": 0,\n        \"updatedAt\": \"2022-02-05T19:33:40.495Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Exam start",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/exam/start/61fed3bee70b820c660e3eec",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"exam",
+						"start",
+						"61fed3bee70b820c660e3eec"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exam start",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/exam/start/61fed3bee70b820c660e3eec",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"exam",
+								"start",
+								"61fed3bee70b820c660e3eec"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "685"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2ad-EpfBiSfSJ4qctGHhlld1K/ulP+Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 20:07:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Start Exam.\",\n    \"quiz\": {\n        \"_id\": \"61fed3bee70b820c660e3eec\",\n        \"name\": \"These quiestions are dummy\",\n        \"question_list\": [\n            {\n                \"question_number\": 1,\n                \"question\": \"hi how are you\",\n                \"options\": {\n                    \"1\": \"fine\",\n                    \"2\": \"good\",\n                    \"3\": \"not fine\"\n                },\n                \"_id\": \"61fed00cb34bdca37aa3b85d\"\n            },\n            {\n                \"question_number\": 2,\n                \"question\": \"Where are you?\",\n                \"options\": {\n                    \"1\": \"Moon\",\n                    \"2\": \"Mars\",\n                    \"3\": \"earth\"\n                },\n                \"_id\": \"61fed00cb34bdca37aa3b85e\"\n            },\n            {\n                \"question_number\": 3,\n                \"question\": \"What is good?\",\n                \"options\": {\n                    \"1\": \"good\",\n                    \"2\": \"bad\",\n                    \"3\": \"worst\"\n                },\n                \"_id\": \"61fed3ebe70b820c660e3ef8\"\n            }\n        ],\n        \"answers\": {\n            \"1\": 1,\n            \"2\": 3,\n            \"3\": 1\n        },\n        \"is_published\": true,\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n        \"createdAt\": \"2022-02-05T19:45:02.179Z\",\n        \"updatedAt\": \"2022-02-05T20:07:34.913Z\",\n        \"__v\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Exam submit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"submitted_answers\":{\r\n    \"1\":1,\r\n    \"2\":3,\r\n    \"3\":10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/exam/submit/61fed3bee70b820c660e3eec",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"exam",
+						"submit",
+						"61fed3bee70b820c660e3eec"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exam submit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"submitted_answers\":{\r\n    \"1\":1,\r\n    \"2\":3,\r\n    \"3\":10\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/exam/submit/61fed3bee70b820c660e3eec",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"exam",
+								"submit",
+								"61fed3bee70b820c660e3eec"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "99"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"63-zD1CjaQ5pXxX4sZG+DzLuWBx7I4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Feb 2022 21:02:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Exam Submitted\",\n    \"data\": {\n        \"resultId\": \"61fee6034fd9c528d1aed41b\",\n        \"resultPercent\": \"66.67\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Report All attempted quizzes percentage",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/report/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"report",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Report All attempted quizzes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/report/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "593"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"251-1gDlsh15U0Ki6ilAvVKsx/KzQPE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Feb 2022 04:44:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Your report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"quiz_id\": \"61fed3bee70b820c660e3eec\",\n                \"result_percent\": 100,\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"quiz_id\": \"61fed3bee70b820c660e3eec\",\n                \"result_percent\": 66.66666666666667,\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"quiz_id\": \"61fed3bee70b820c660e3eec\",\n                \"result_percent\": 67,\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"quiz_id\": \"61fed3bee70b820c660e3eec\",\n                \"result_percent\": 67,\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"quiz_id\": \"61fed00cb34bdca37aa3b85c\",\n                \"result_percent\": 100,\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Report of a particular exam",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/report/61fee5763bcbd7db497a44be",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"report",
+						"61fee5763bcbd7db497a44be"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Report of a particular exam",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/report/61fee5763bcbd7db497a44be",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"61fee5763bcbd7db497a44be"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "312"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"138-xOxngB+4ih9UR9e1Gu6mhRr282M\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Feb 2022 04:49:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Your report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"_id\": \"61fee5763bcbd7db497a44be\",\n                \"quiz_id\": \"61fed3bee70b820c660e3eec\",\n                \"total_questions\": 3,\n                \"correct_answers\": 3,\n                \"incorrect_answers\": 0,\n                \"notattempted_answers\": 0,\n                \"result_percent\": 100,\n                \"createdAt\": \"2022-02-05T21:00:38.497Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Report Question attempted count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/report/attempts",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"report",
+						"attempts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Report Question attempted count",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/report/attempts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"attempts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "260"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"104-Vu823P1yte26YJycyzQmylqgFK0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Feb 2022 04:39:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Your report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"numberOfAttempts\": 4,\n                \"quiz_id\": \"61fed3bee70b820c660e3eec\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"numberOfAttempts\": 1,\n                \"quiz_id\": \"61fed00cb34bdca37aa3b85c\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}
