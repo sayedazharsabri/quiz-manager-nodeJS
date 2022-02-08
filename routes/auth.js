@@ -13,7 +13,7 @@ router.post("/register",
         body('email')
             .isEmail()
             .withMessage('Please enter a valid email.')
-            .custom((value, { req }) => {
+            .custom(value => {
                 return isUserExistCheckByEmail(value)
                 .then(status => {
                     if (status) {

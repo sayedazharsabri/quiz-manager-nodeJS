@@ -6,6 +6,7 @@ const quizSchema = new schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     question_list: [
         {
@@ -29,15 +30,15 @@ const quizSchema = new schema({
         type: Boolean,
         default: false
     },
-    per_question_marks:{
+    per_question_marks: {
         type: Number,
         default: 1
     },
-    per_question_negative_marks:{
+    per_question_negative_marks: {
         type: Number,
         default: 0
     },
-    pass_percent:{
+    pass_percent: {
         type: Number,
         default: 60
     },

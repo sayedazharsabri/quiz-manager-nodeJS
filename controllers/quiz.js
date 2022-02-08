@@ -145,12 +145,12 @@ exports.updateQuiz = async (req, res, next) => {
       throw error;
     }
 
-    quiz.name = req.body.name;
     quiz.question_list = req.body.question_list;
     quiz.answers = req.body.answers;
     quiz.is_negative_marks_allowed = req.body.is_negative_marks_allowed;
     quiz.per_question_marks = req.body.per_question_marks;
     quiz.per_question_negative_marks = req.body.per_question_negative_marks;
+    quiz.pass_percent = req.body.pass_percent;
 
     await quiz.save();
     res.status(200).json({ message: 'Quiz Updated.', quiz: quiz });
@@ -202,3 +202,11 @@ exports.publishQuiz = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.isQuestionNameExist = async (name) => {
+  const quiz = await Quiz.findOne({ name });
+  if (quiz) {
+      return true;
+  }
+  return false;
+}

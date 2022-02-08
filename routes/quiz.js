@@ -1,7 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
 
-const { createQuiz, getQuiz, publishQuiz, updateQuiz } = require('../controllers/quiz');
+const { createQuiz, getQuiz, publishQuiz, updateQuiz, isQuestionNameExist } = require('../controllers/quiz');
 const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
@@ -16,7 +16,19 @@ router.post(
         body('name')
             .trim()
             .isLength({ min: 5 })
-            .withMessage("Enter a proper name with more than 6 characted"),
+            .withMessage("Enter a proper name with more than 6 characted")
+            .custom(qName => {
+                return isQuestionNameExist(qName)
+                    .then(status => {
+                        if (status) {
+                            return Promise.reject('Question name already exists, Duplicate question names are not allowed!');
+                        }
+                    })
+                    .catch(err => {
+                        return Promise.reject(err);
+                    });
+            })
+            .trim(),
         body('question_list')
             .custom((queArr) => {
                 if (!Array.isArray(queArr) || queArr.length == 0) {
