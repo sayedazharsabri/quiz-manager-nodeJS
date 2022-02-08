@@ -18,12 +18,19 @@ It is a REST API for a quiz app where users can create and attempt quizzes. The 
   - Users can attempt other users' published quizzes as many times as they choose.
   - Users can view basic stats on quiz attempts/completion/scores/etc..
   - Quizzes must contain at least 1 question and should support varying numbers of questions.
-  - Questions must have a non-empty question and a non-empty answer
+  - Questions must have a non-empty question and a non-empty answer.
   - Each submitted quiz should have it's questions marked correct or incorrect based on the predefined answers.
+  
+## Important
+  - Authentication token will expire in 1 hour after login, kindly submit the quiz before that.(For Now, in upcoming changes we will change this also)
+
+## What new?
+- We are added negative marking option in this.
+- We are added date filters for report and quiz.
 
 
 ## What next?
-- We will add negative marking option in this.
+- We will add dynamic scoring questions.?
 
 
 ## How to start on local machine.
