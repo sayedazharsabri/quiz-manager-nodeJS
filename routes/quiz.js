@@ -1,7 +1,7 @@
 const express = require('express');
 const { body } = require('express-validator');
 
-const { createQuiz, editQuiz, publishQuiz, updateQuiz } = require('../controllers/quiz');
+const { createQuiz, getQuiz, publishQuiz, updateQuiz } = require('../controllers/quiz');
 const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
@@ -79,19 +79,14 @@ router.post(
     createQuiz
 );
 
-/*This route is used to get quiz to edit*/
-// POST /quiz/edit  
-router.post('/edit', isAuth, [
-    body('quizId')
-        .trim()
-        .isLength({ min: 5 })
-        .withMessage("Please enter valid quizID"),
-], editQuiz);
+/*This route is used to get quiz*/
+// POST /quiz/quizId
+router.get('/:quizId?', isAuth, getQuiz);
 
 /*This route is used to update the quiz*/
-// POST /quiz/update
-router.post(
-    '/update',
+// PUT /quiz/
+router.put(
+    '/',
     isAuth,
     [
         body('_id')
@@ -165,8 +160,8 @@ router.post(
 );
 
 /*This route is used to publish the quiz*/
-// POST /quiz/publish
-router.post('/publish', isAuth,
+// PATCH /quiz/publish
+router.patch('/publish', isAuth,
     [
         body('quizId')
             .trim()

@@ -6,6 +6,7 @@ const { isUserExistCheckByEmail } = require('../controllers/user');
 
 const router = express.Router();
 
+/*This route is use to create account for the first time*/
 // POST /auth/register
 router.post("/register",
     [

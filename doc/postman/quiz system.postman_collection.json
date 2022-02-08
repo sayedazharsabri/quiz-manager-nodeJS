@@ -290,7 +290,7 @@
 			]
 		},
 		{
-			"name": "Quiz Edit",
+			"name": "Quiz Get",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -302,53 +302,36 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"quizId\":\"{{quizId}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "localhost:3000/quiz/edit",
+					"raw": "localhost:3000/quiz/6202b6360fcd1f0e87edab18",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"quiz",
-						"edit"
+						"6202b6360fcd1f0e87edab18"
 					]
-				}
+				},
+				"description": "This API is used to get a particular quiz or list of all the quizzes created by this user.\n\nYou can apply date filters using to_date and from_date. it will include from_date quizzes but exclude to_date quizzes"
 			},
 			"response": [
 				{
-					"name": "Quiz Edit",
+					"name": "Quiz Get with quizId",
 					"originalRequest": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"quizId\":\"{{quizId}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:3000/quiz/edit",
+							"raw": "localhost:3000/quiz/{{quizId}}",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"quiz",
-								"edit"
+								"{{quizId}}"
 							]
 						}
 					},
@@ -370,11 +353,11 @@
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"297-Fy+CzwWZ7L0NHX/HrTOQP4xqeng\""
+							"value": "W/\"297-ec8TRJzCUzZRnuxxwUAQJwkJfgI\""
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 07 Feb 2022 21:37:56 GMT"
+							"value": "Tue, 08 Feb 2022 15:41:57 GMT"
 						},
 						{
 							"key": "Connection",
@@ -386,7 +369,182 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"Quiz fetched.\",\n    \"quiz\": {\n        \"_id\": \"620190f99f11ce04f1a73279\",\n        \"name\": \"These quiestions are dummy\",\n        \"question_list\": [\n            {\n                \"question_number\": 1,\n                \"question\": \"hi how are you\",\n                \"options\": {\n                    \"1\": \"fine\",\n                    \"2\": \"good\",\n                    \"3\": \"not fine\"\n                },\n                \"_id\": \"620190f99f11ce04f1a7327a\"\n            },\n            {\n                \"question_number\": 2,\n                \"question\": \"Where are you?\",\n                \"options\": {\n                    \"1\": \"Moon\",\n                    \"2\": \"Mars\",\n                    \"3\": \"earth\"\n                },\n                \"_id\": \"620190f99f11ce04f1a7327b\"\n            }\n        ],\n        \"answers\": {\n            \"1\": 1,\n            \"2\": 3\n        },\n        \"is_published\": false,\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n        \"is_negative_marks_allowed\": true,\n        \"per_question_marks\": 2,\n        \"per_question_negative_marks\": 0.5,\n        \"pass_percent\": 60,\n        \"createdAt\": \"2022-02-07T21:36:57.565Z\",\n        \"updatedAt\": \"2022-02-07T21:36:57.565Z\",\n        \"__v\": 0\n    }\n}"
+					"body": "{\n    \"message\": \"Quiz fetched.\",\n    \"quiz\": {\n        \"_id\": \"62028c895ff6789a965e83df\",\n        \"name\": \"These quiestions are dummy\",\n        \"question_list\": [\n            {\n                \"question_number\": 1,\n                \"question\": \"hi how are you\",\n                \"options\": {\n                    \"1\": \"fine\",\n                    \"2\": \"good\",\n                    \"3\": \"not fine\"\n                },\n                \"_id\": \"62028c895ff6789a965e83e0\"\n            },\n            {\n                \"question_number\": 2,\n                \"question\": \"Where are you?\",\n                \"options\": {\n                    \"1\": \"Moon\",\n                    \"2\": \"Mars\",\n                    \"3\": \"earth\"\n                },\n                \"_id\": \"62028c895ff6789a965e83e1\"\n            }\n        ],\n        \"answers\": {\n            \"1\": 1,\n            \"2\": 3\n        },\n        \"is_published\": false,\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n        \"is_negative_marks_allowed\": true,\n        \"per_question_marks\": 2,\n        \"per_question_negative_marks\": 0.5,\n        \"pass_percent\": 60,\n        \"createdAt\": \"2022-02-08T15:30:17.524Z\",\n        \"updatedAt\": \"2022-02-08T15:30:17.524Z\",\n        \"__v\": 0\n    }\n}"
+				},
+				{
+					"name": "Quiz Get - list all quiz created by this user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/quiz/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3452"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d7c-HBDRj0tagNb+Sz/QkzGuwGhsHQk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Feb 2022 16:04:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Quiz fetched.\",\n    \"quiz\": [\n        {\n            \"_id\": \"620182a691e71e0ae1cc6493\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T20:35:50.557Z\"\n        },\n        {\n            \"_id\": \"620189d1e5b8949c6981b460\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:06:25.776Z\"\n        },\n        {\n            \"_id\": \"62018fc7b3a4e10f979b4390\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:31:51.231Z\"\n        },\n        {\n            \"_id\": \"62019017d4bca1a45f4eca48\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:12.007Z\"\n        },\n        {\n            \"_id\": \"62019020d4bca1a45f4eca4c\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:20.315Z\"\n        },\n        {\n            \"_id\": \"62019021d4bca1a45f4eca50\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:21.743Z\"\n        },\n        {\n            \"_id\": \"62019029d4bca1a45f4eca54\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:29.179Z\"\n        },\n        {\n            \"_id\": \"6201902ad4bca1a45f4eca58\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:30.560Z\"\n        },\n        {\n            \"_id\": \"6201902cd4bca1a45f4eca5c\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:32.959Z\"\n        },\n        {\n            \"_id\": \"6201903e38d0a22c611eef47\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:50.152Z\"\n        },\n        {\n            \"_id\": \"6201904038d0a22c611eef4b\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:52.350Z\"\n        },\n        {\n            \"_id\": \"6201906afd185d90de7bbbcf\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:34:34.999Z\"\n        },\n        {\n            \"_id\": \"62019075e6c1107d742ea8f3\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:34:45.944Z\"\n        },\n        {\n            \"_id\": \"6201908ae6c1107d742ea8f7\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:35:06.488Z\"\n        },\n        {\n            \"_id\": \"6201909ae6c1107d742ea8fb\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:35:22.535Z\"\n        },\n        {\n            \"_id\": \"620190cf9f11ce04f1a73270\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:36:15.504Z\"\n        },\n        {\n            \"_id\": \"620190ea9f11ce04f1a73275\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:36:42.162Z\"\n        },\n        {\n            \"_id\": \"620190f99f11ce04f1a73279\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:36:57.565Z\"\n        },\n        {\n            \"_id\": \"62028c215ff6789a965e83db\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-08T15:28:33.592Z\"\n        },\n        {\n            \"_id\": \"62028c895ff6789a965e83df\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-08T15:30:17.524Z\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Quiz Get - List quiz with from_date filter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/quiz/?from_date=2022-02-08",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz",
+								""
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2022-02-08"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "378"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"17a-iZ/tbIC7rfA67Rw+WX8knDqGtZY\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Feb 2022 16:05:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Quiz fetched.\",\n    \"quiz\": [\n        {\n            \"_id\": \"62028c215ff6789a965e83db\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-08T15:28:33.592Z\"\n        },\n        {\n            \"_id\": \"62028c895ff6789a965e83df\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-08T15:30:17.524Z\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Quiz Get - with date filter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/quiz/?from_date=2022-02-07&to_date=2022-02-09",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quiz",
+								""
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2022-02-07"
+								},
+								{
+									"key": "to_date",
+									"value": "2022-02-09"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3452"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d7c-HBDRj0tagNb+Sz/QkzGuwGhsHQk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Feb 2022 16:38:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Quiz fetched.\",\n    \"quiz\": [\n        {\n            \"_id\": \"620182a691e71e0ae1cc6493\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T20:35:50.557Z\"\n        },\n        {\n            \"_id\": \"620189d1e5b8949c6981b460\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:06:25.776Z\"\n        },\n        {\n            \"_id\": \"62018fc7b3a4e10f979b4390\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:31:51.231Z\"\n        },\n        {\n            \"_id\": \"62019017d4bca1a45f4eca48\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:12.007Z\"\n        },\n        {\n            \"_id\": \"62019020d4bca1a45f4eca4c\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:20.315Z\"\n        },\n        {\n            \"_id\": \"62019021d4bca1a45f4eca50\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:21.743Z\"\n        },\n        {\n            \"_id\": \"62019029d4bca1a45f4eca54\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:29.179Z\"\n        },\n        {\n            \"_id\": \"6201902ad4bca1a45f4eca58\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:30.560Z\"\n        },\n        {\n            \"_id\": \"6201902cd4bca1a45f4eca5c\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:32.959Z\"\n        },\n        {\n            \"_id\": \"6201903e38d0a22c611eef47\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:50.152Z\"\n        },\n        {\n            \"_id\": \"6201904038d0a22c611eef4b\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:33:52.350Z\"\n        },\n        {\n            \"_id\": \"6201906afd185d90de7bbbcf\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:34:34.999Z\"\n        },\n        {\n            \"_id\": \"62019075e6c1107d742ea8f3\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:34:45.944Z\"\n        },\n        {\n            \"_id\": \"6201908ae6c1107d742ea8f7\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:35:06.488Z\"\n        },\n        {\n            \"_id\": \"6201909ae6c1107d742ea8fb\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:35:22.535Z\"\n        },\n        {\n            \"_id\": \"620190cf9f11ce04f1a73270\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:36:15.504Z\"\n        },\n        {\n            \"_id\": \"620190ea9f11ce04f1a73275\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:36:42.162Z\"\n        },\n        {\n            \"_id\": \"620190f99f11ce04f1a73279\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": true,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-07T21:36:57.565Z\"\n        },\n        {\n            \"_id\": \"62028c215ff6789a965e83db\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-08T15:28:33.592Z\"\n        },\n        {\n            \"_id\": \"62028c895ff6789a965e83df\",\n            \"name\": \"These quiestions are dummy\",\n            \"is_published\": false,\n            \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\n            \"createdAt\": \"2022-02-08T15:30:17.524Z\"\n        }\n    ]\n}"
 				}
 			]
 		},
@@ -403,11 +561,11 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"_id\": \"620190f99f11ce04f1a73279\",\r\n    \"name\": \"These quiestions are dummy\",\r\n    \"question_list\": [\r\n        {\r\n            \"question_number\": 1,\r\n            \"question\": \"hi how are you\",\r\n            \"options\": {\r\n                \"1\": \"fine\",\r\n                \"2\": \"good\",\r\n                \"3\": \"not fine\"\r\n            },\r\n            \"_id\": \"620190f99f11ce04f1a7327a\"\r\n        },\r\n        {\r\n            \"question_number\": 2,\r\n            \"question\": \"Where are you?\",\r\n            \"options\": {\r\n                \"1\": \"Moon\",\r\n                \"2\": \"Mars\",\r\n                \"3\": \"earth\"\r\n            },\r\n            \"_id\": \"620190f99f11ce04f1a7327b\"\r\n        },\r\n        {\r\n            \"question_number\": 3,\r\n            \"question\": \"Where are you?\",\r\n            \"options\": {\r\n                \"1\": \"Moon\",\r\n                \"2\": \"Mars\",\r\n                \"3\": \"earth\"\r\n            },\r\n            \"_id\": \"620190f99f11ce04f1a7327b\"\r\n        },\r\n        {\r\n            \"question_number\": 4,\r\n            \"question\": \"Where are you?\",\r\n            \"options\": {\r\n                \"1\": \"Moon\",\r\n                \"2\": \"Mars\",\r\n                \"3\": \"earth\"\r\n            },\r\n            \"_id\": \"620190f99f11ce04f1a7327b\"\r\n        },\r\n        {\r\n            \"question_number\": 5,\r\n            \"question\": \"Where are you?\",\r\n            \"options\": {\r\n                \"1\": \"Moon\",\r\n                \"2\": \"Mars\",\r\n                \"3\": \"earth\"\r\n            },\r\n            \"_id\": \"620190f99f11ce04f1a7327b\"\r\n        }\r\n    ],\r\n    \"answers\": {\r\n        \"1\": 1,\r\n        \"2\": 2,\r\n        \"3\": 3,\r\n        \"4\": 4,\r\n        \"5\": 5\r\n    },\r\n    \"is_published\": false,\r\n    \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\r\n    \"is_negative_marks_allowed\": true,\r\n    \"per_question_marks\": 2,\r\n    \"per_question_negative_marks\": 0.5,\r\n    \"pass_percent\": 60,\r\n    \"createdAt\": \"2022-02-07T21:36:57.565Z\",\r\n    \"updatedAt\": \"2022-02-07T21:36:57.565Z\",\r\n    \"__v\": 0\r\n}",
+					"raw": "{\r\n        \"_id\": \"6202b6360fcd1f0e87edab18\",\r\n        \"name\": \"These quiestions are dummy\",\r\n        \"question_list\": [\r\n            {\r\n                \"question_number\": 1,\r\n                \"question\": \"hi how are you\",\r\n                \"options\": {\r\n                    \"1\": \"fine\",\r\n                    \"2\": \"good\",\r\n                    \"3\": \"not fine\"\r\n                },\r\n                \"_id\": \"6202b6360fcd1f0e87edab19\"\r\n            },\r\n            {\r\n                \"question_number\": 2,\r\n                \"question\": \"Where are you?\",\r\n                \"options\": {\r\n                    \"1\": \"Moon\",\r\n                    \"2\": \"Mars\",\r\n                    \"3\": \"earth\"\r\n                },\r\n                \"_id\": \"6202b6360fcd1f0e87edab1a\"\r\n            },\r\n            {\r\n                \"question_number\": 3,\r\n                \"question\": \"Where are you?\",\r\n                \"options\": {\r\n                    \"1\": \"Moon\",\r\n                    \"2\": \"Mars\",\r\n                    \"3\": \"earth\"\r\n                },\r\n                \"_id\": \"6202b6360fcd1f0e87edab1a\"\r\n            }\r\n        ],\r\n        \"answers\": {\r\n            \"1\": 1,\r\n            \"2\": 3,\r\n            \"3\":3\r\n        },\r\n        \"is_published\": false,\r\n        \"created_by\": \"61fea9a5a0e4e2ad2c060fea\",\r\n        \"is_negative_marks_allowed\": true,\r\n        \"per_question_marks\": 2,\r\n        \"per_question_negative_marks\": 0.5,\r\n        \"pass_percent\": 60,\r\n        \"createdAt\": \"2022-02-08T18:28:06.118Z\",\r\n        \"updatedAt\": \"2022-02-08T18:28:06.118Z\",\r\n        \"__v\": 0\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -415,14 +573,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/quiz/update",
+					"raw": "localhost:3000/quiz/",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"quiz",
-						"update"
+						""
 					]
 				}
 			},
@@ -504,7 +662,7 @@
 						}
 					]
 				},
-				"method": "POST",
+				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -781,7 +939,7 @@
 			]
 		},
 		{
-			"name": "Report All attempted quizzes percentage",
+			"name": "Report All attempted quizzes with status",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -809,7 +967,7 @@
 			},
 			"response": [
 				{
-					"name": "Report All attempted quizzes percentage",
+					"name": "Report All attempted quizzes with status",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
@@ -839,15 +997,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "490"
+							"value": "951"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"1ea-Trve5UTo4yqDZ4Bw1s4zC3ioYMg\""
+							"value": "W/\"3b7-V8lJIYj5QE5kIFktTSA8aT5VPKY\""
 						},
 						{
 							"key": "Date",
-							"value": "Mon, 07 Feb 2022 22:02:25 GMT"
+							"value": "Tue, 08 Feb 2022 18:41:18 GMT"
 						},
 						{
 							"key": "Connection",
@@ -859,7 +1017,70 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"message\": \"Your report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"result_status\": \"pass\",\n                \"createdAt\": \"2022-02-07T21:59:33.213Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-07T21:59:43.944Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"quiz_id\": \"620190ea9f11ce04f1a73275\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-07T22:01:13.503Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+					"body": "{\n    \"message\": \"Your report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"_id\": \"6201964502426738a54a22c2\",\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"result_status\": \"pass\",\n                \"createdAt\": \"2022-02-07T21:59:33.213Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6201964f02426738a54a22ca\",\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-07T21:59:43.944Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"620196a902426738a54a22d7\",\n                \"quiz_id\": \"620190ea9f11ce04f1a73275\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-07T22:01:13.503Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"620207e10de7cf3f0c5824ac\",\n                \"quiz_id\": \"620190ea9f11ce04f1a73275\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-08T06:04:17.028Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6202b88a2ef4c5ee2904cd90\",\n                \"quiz_id\": \"6202b6360fcd1f0e87edab18\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-08T18:38:02.263Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "With date filter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/report/?from_date=2022-02-07&to_date=2022-02-08",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								""
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2022-02-07"
+								},
+								{
+									"key": "to_date",
+									"value": "2022-02-08"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "589"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24d-UdHRj4LsahunbAxYihA4V3s0Uiw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Feb 2022 18:42:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Your report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"_id\": \"6201964502426738a54a22c2\",\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"result_status\": \"pass\",\n                \"createdAt\": \"2022-02-07T21:59:33.213Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6201964f02426738a54a22ca\",\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-07T21:59:43.944Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"620196a902426738a54a22d7\",\n                \"quiz_id\": \"620190ea9f11ce04f1a73275\",\n                \"result_status\": \"fail\",\n                \"createdAt\": \"2022-02-07T22:01:13.503Z\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
 				}
 			]
 		},
@@ -980,7 +1201,65 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Report Question attempted count",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/report/attempts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"attempts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-UGw2N8UgefokDXBVWX26MphX0m0\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Feb 2022 17:36:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Your attempt report.\",\n    \"data\": {\n        \"result\": [\n            {\n                \"numberOfAttempts\": 2,\n                \"quiz_id\": \"620190f99f11ce04f1a73279\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            },\n            {\n                \"numberOfAttempts\": 2,\n                \"quiz_id\": \"620190ea9f11ce04f1a73275\",\n                \"quiz\": [\n                    {\n                        \"name\": \"These quiestions are dummy\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
 		}
 	]
 }
